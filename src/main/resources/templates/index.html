@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Computational Mathematics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/actions.js}"></script>
+</head>
+<body>
+	<h1>Sets operations</h1>
+	<div class="container container-padding50">
+    <form name="form1" action="#" onsubmit="required()" th:action="@{/}" th:object="${mystatement}" method="post">
+        <p><input id="text1" type="text" th:field="*{content1}" placeholder="Set one" class="js-userinput container-textinput" />
+        </p><p>
+        <input id="text1" type="text" th:field="*{content2}" placeholder="Set two" class="js-userinput container-textinput2" />
+        </p>
+        <div><input type="submit" value="Generate" /> 
+        <input type="reset" value="Reset" /></div>
+    </form>
+    
+    </div>
+    <p>Instructions:</p>
+    <p>
+    </p>
+</body>
+</html>
