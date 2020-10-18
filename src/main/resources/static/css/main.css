@@ -68,6 +68,12 @@ body {
   height: 250px;                    /* NEW */
 }
 
+.container-padding60 {
+  position: relative;              /* NEW */
+  padding-top: 50px;
+  height: 250px;                    /* NEW */
+}
+
 .container-textinput {
 /*  position: absolute;*/              /* NEW */
   left: 50%;

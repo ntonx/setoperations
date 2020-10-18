@@ -1,9 +1,7 @@
 package com.example.sets;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Objects;
 
 import org.springframework.stereotype.Service;
 
@@ -14,24 +12,17 @@ public class AnalyzerService {
 	public List<String> analizeOne(List<String> list) {
 		
 		List<String> resultOne = new ArrayList<String>();
-		
-//		System.out.println("set:" + list);
-		// TODO Auto-generated method stub
-	//	resultOne.add(list);
-		
-		
+			
 		int cardinality = list.size();
 		String members = list.toString();
+		members=members.replaceAll("\\[", "{").replaceAll("\\]","}");
 		List<List<String>> powerSet =  new ArrayList<List<String>>();
 		powerSet = getPowerSet(list);
-
-/*		System.out.println("cardinality:" + cardinality);
-		System.out.println("members:" + members);
-		System.out.println("powerSet:" + powerSet);
-*/		
+		String power = powerSet.toString();
+		power = power.replaceAll("\\[", "{").replaceAll("\\]","}");
 		resultOne.add(String.valueOf(cardinality));
 		resultOne.add(members);
-		resultOne.add(2, powerSet.toString());	
+		resultOne.add(2, power);
 		
 		return resultOne;
 	}
@@ -63,10 +54,6 @@ public class AnalyzerService {
 	public List<String> analyzeBoth(List<String> set1, List<String> set2) {
 		
 		List<String> result = new ArrayList<String>();
-	
-		System.out.println("set1:" + set1);
-		System.out.println("set2:" + set2);
-		
 		
 		boolean comparation = getComparationResult(set1,set2);
 		boolean subsetA = getSubsetResult(set1,set2);
@@ -78,76 +65,104 @@ public class AnalyzerService {
 		List<String> diffSymetricAB = getSymetDifference(set1,set2);
 		List<String> diffSymetricBA = getSymetDifference(set2,set1);
 		List<String> unionAB = getUnionAB(set1,set2);
+		List<String> intersectionAB = getIntersectionAB(set1,set2);
+		boolean disjoin = areDisjoin(intersectionAB);
+		List<String> productAB = getProductAB(set1,set2);
+		List<String> productBA = getProductAB(set2,set1);
+				
+		result.add(String.valueOf(comparation));
+		result.add(String.valueOf(subsetA));
+		result.add(String.valueOf(subsetB));
+		result.add(String.valueOf(properSubsetA));
+		result.add(String.valueOf(properSubsetB));
 		
-		/*Comparation a=b?.......		DONE
-		 * Subset ac=b? bc=a?........	DONE
-		 * proper subset acb? bca?.....	DONE
-		 * difference a-b?, b-a?.......DONE
-		 * symetric diff a-b? b-a?......DONE
-		 * union aub
-		 * intersection a^b? are disjoint?
-		 * product a*b, b*a
-		 * */
-		
-		result.add("A=B? "+String.valueOf(comparation));
-		result.add("AC=B? "+String.valueOf(subsetA));
-		result.add("BC=A? "+String.valueOf(subsetB));
-		result.add("ACB? "+String.valueOf(properSubsetA));
-		result.add("BCA? "+String.valueOf(properSubsetB));
-		result.add("A-B: "+differenceAB.toString());
-		result.add("B-A: "+differenceBA.toString());
-		result.add("Symetric diff(A-B):"+diffSymetricAB.toString());
-		result.add("Symetric diff(B-A):"+diffSymetricBA.toString());
-		result.add("A U B:"+unionAB.toString());
+		result.add(changeBracket(differenceAB.toString()));
+		result.add(changeBracket(differenceBA.toString()));
+		result.add(changeBracket(diffSymetricAB.toString()));
+		result.add(changeBracket(diffSymetricBA.toString()));
+		result.add(changeBracket(unionAB.toString()));
+		result.add(changeBracket(intersectionAB.toString()));
+		result.add(String.valueOf(disjoin));
+		result.add(changeBracket(productAB.toString()));
+		result.add(changeBracket(productBA.toString()));
 		return result;
 	}
+	
 
+	private String changeBracket(String string) {
+		String string1 =  string.replaceAll("\\[", "{").replaceAll("\\]","}");
+		return string1;
+	}
 
-private List<String> getUnionAB(List<String> set1, List<String> set2) {
+	private List<String> getProductAB(List<String> set1, List<String> set2) {
 		List<String> inter1 = new ArrayList<String>();
-		/*
+		String data="(";
 		for(int i=0;i<set1.size();i++) {
-			String target = set1.get(i);
-				if(set2.contains(target)&&set1.contains(target)) {
-					//do nothing
-				}else {
-					int pos = set1.indexOf(target);
-					inter1.add(set1.get(pos));
+			for (int j=0;j<set2.size();j++) {
+				data = data+set1.get(i)+","+set2.get(j)+"),(";
 			}
-		}*/
-		inter1.addAll(set1);
-		inter1.addAll(set2);
-		
+			data = data.substring(0,data.length()-2);
+			inter1.add(data);
+			data="(";
+		}
 		return inter1;
 	}
 
-private List<String> getSymetDifference(List<String> set1, List<String> set2) {
+	private boolean areDisjoin(List<String> intersectionAB) {
+		if(intersectionAB.size()>0) return false;
+		return true;
+	}
+
+	
+	private List<String> getIntersectionAB(List<String> set1, List<String> set2) {
+		List<String> inter1 = new ArrayList<String>(); 
+		for(int i=0;i<set2.size();i++) {
+			String target = set2.get(i);
+				if(set1.contains(target)) {
+					int pos = set2.indexOf(target);
+					inter1.add(set2.get(pos));
+				}
+		}
+		return inter1;
+	}
+
+	
+	private List<String> getUnionAB(List<String> set1, List<String> set2) {
+		List<String> inter1 = new ArrayList<String>(set1); 
+		for(int i=0;i<set2.size();i++) {
+			String target = set2.get(i);
+				if(inter1.contains(target)) {
+						//do nothing
+				}else {
+					int pos = set2.indexOf(target);
+					inter1.add(set2.get(pos));
+				}
+		}
+		return inter1;
+	}
+
+	
+	private List<String> getSymetDifference(List<String> set1, List<String> set2) {
 		List<String> inter1 = new ArrayList<String>();
 		inter1.addAll(getIntermediateSymet(set1,set2));
 		inter1.addAll(getIntermediateSymet(set2,set1));
 		return inter1;
 	}
 
-private List<String> getIntermediateSymet(List<String> set1, List<String> set2) {
-	List<String> res = new ArrayList<String>();
-	for(int i=0;i<set1.size();i++) {
-		String target = set1.get(i);
-			if(set2.contains(target)&&set1.contains(target)) {
-				//do nothing
-			}else {
-				int pos = set1.indexOf(target);
-				res.add(set1.get(pos));
-		}
-	}
-	return res;
-}
-
-//	String expresion1 = "estos son mis datos";//mychar.content1;
-//	String expresion2 ="estos,datos,son";// "1,2,3,4,5";//mychar.content2;
-
 	
-
-
+	private List<String> getIntermediateSymet(List<String> set1, List<String> set2) {
+		List<String> res = new ArrayList<String>();
+		for(int i=0;i<set1.size();i++) {
+			String target = set1.get(i);
+				if(set2.contains(target)){
+					//do nothing
+				}else {
+					int pos = set1.indexOf(target);
+					res.add(set1.get(pos));
+			}
+		}
+		return res;
+	}
 	
 	private List<String> getDifference(List<String> set1, List<String> set2) {
 		List<String> cloned_list = new ArrayList<String>(set1); 
@@ -191,7 +206,6 @@ private List<String> getIntermediateSymet(List<String> set1, List<String> set2) 
 	}
 
 	public boolean getComparationResult(List<String> elements1, List<String> elements2) {
-	    // Optional quick test since size must match
 	    if (elements1.size() != elements2.size()) {
 	        return false;
 	    }
@@ -203,8 +217,8 @@ private List<String> getIntermediateSymet(List<String> set1, List<String> set2) 
 	    }
 	    return work.isEmpty();
 	}
-}
-//	 	
 
+
+}
 
 	 
