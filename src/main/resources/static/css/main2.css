@@ -50,8 +50,7 @@ input[type=reset]:hover {
 
 /* Add a background color and some padding around the form */
 .container {
-  border-radius: 5px;
- /* background-color: #e4e3e3;*/
+  border-radius: 10px;
   padding-top: 20px;
 } 
 
@@ -62,11 +61,20 @@ body {
 }
 
 
+
+br {   
+    content: "";
+    margin: 2em;
+    display: block;
+    margin-bottom: -20px; 
+ }
+
+
 .container-padding50 {
   position: relative;              /* NEW */
   padding-top: 0px;
   /*height: 140px;*/
-  margin:120px                   /* NEW */
+  /*margin:120px                   /* NEW */
 }
 
 .container-padding60 {
@@ -75,3 +83,30 @@ body {
   /*height: 140px;*/                   
   margin:20px /* NEW */
 }
+
+.h1{
+	 background-color: darkseagreen;
+    padding-bottom: 20px;
+    margin-bottom: 02px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    color: white;
+    margin-top: 5px;
+    padding-top: 5px;
+	
+}
+
+h1{background-color: darkseagreen;
+    padding-bottom: 20px;
+    margin-bottom: 02px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    color: white;
+    margin-top: 5px;
+    padding-top: 5px;}

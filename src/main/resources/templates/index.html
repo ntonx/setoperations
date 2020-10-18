@@ -7,20 +7,25 @@
     <script type="text/javascript" th:src="@{/js/actions.js}"></script>
 </head>
 <body>
-	<h1>Sets operations</h1>
+	<h1 class="h1">Sets operations</h1>
 	<div class="container container-padding50">
     <form name="form1" action="#" onsubmit="required()" th:action="@{/}" th:object="${mystatement}" method="post">
-        <p><input id="text1" type="text" th:field="*{content1}" placeholder="Set one" class="js-userinput container-textinput" />
+
+	   
+
+        <p><input id="text1" type="text" th:field="*{content1}" placeholder="Set A" class="container1-textinput"/><!--   />-->
         </p><p>
-        <input id="text1" type="text" th:field="*{content2}" placeholder="Set two" class="js-userinput container-textinput2" />
+        <input id="text1" type="text" th:field="*{content2}" placeholder="Set B" class="container2-textinput"/><!--  />-->
         </p>
-        <div><input type="submit" value="Generate" /> 
-        <input type="reset" value="Reset" /></div>
+        
+        
+		<input type="submit" value="Generate" /> 
+        <input type="reset" value="Reset" />
     </form>
     
     </div>
-    <p>Instructions:</p>
-    <p>
-    </p>
+    <div>
+    <p>Instructions: Write a sentence that represents a set in every box.</p>
+	</div>
 </body>
 </html>

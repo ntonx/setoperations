@@ -3,9 +3,9 @@
 
 /* Style the submit button with a specific background color etc */
 input[type=submit] {
-  position: absolute;              /* NEW */
+  /*position: absolute; */             /* NEW */
   left: 25%;
-  transform: translateX(-80%);     /* NEW; see note below */
+ /* transform: translateX(-80%);*/     /* NEW; see note below */
   text-align: center;
   width: 10%;
   padding: 30px;
@@ -13,16 +13,20 @@ input[type=submit] {
   height: 20%;
   margin:80px;
   
-  background-color: #4CAF50;
+  background-color: #121476;/*#4CAF50;*/
   color: white;
   padding: 12px 12px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px;
+margin-bottom: 15px;
+margin-left: 200px;
+margin-right: 270px;
 }
 
 input[type=reset] {
-   position: absolute;              /* NEW */
+  /* position: absolute; */             /* NEW */
   left: 60%;
   transform: translateX(-80%);     /* NEW; see note below */
   text-align: center;
@@ -37,11 +41,13 @@ input[type=reset] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 15px;
+margin-bottom: 15px;
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
 input[type=submit]:hover {
-  background-color: #276811;
+  background-color: #0a79f5/*#276811;*/
 }
 
 input[type=reset]:hover {
@@ -62,42 +68,61 @@ body {
   margin: 0 auto;
 }
 
+.container1, .container2{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right-style: solid;
+	text-align: center;
+/*	width: 300px;*/
+	height: 16.25px;
+	
+}
+
+
 .container-padding50 {
-  position: relative;              /* NEW */
-  padding-top: 50px;
-  height: 250px;                    /* NEW */
+ /* position: absolute; */             /* NEW */
+  padding-top: 50px;             /* NEW */
 }
 
 .container-padding60 {
-  position: relative;              /* NEW */
-  padding-top: 50px;
-  height: 250px;                    /* NEW */
-}
-
-.container-textinput {
 /*  position: absolute;*/              /* NEW */
-  left: 50%;
- /* transform: translateX(-50%); */    /* NEW; see note below */
-  text-align: center;
-  width: 60%;
-  padding: 15px;
-  font-size: 14px;
-  font-family: Helvetica, sans-serif;
-  border: none;
-  border-bottom: 2px solid black;
-/*  height: 150px; */
+  padding-top: 50px;
+
 }
 
-.container-textinput2 {
- /* position: absolute;  */            /* NEW */
-  left: 50%;
-/*  transform: translateX(-50%),translateY(50%);  */   /* NEW; see note below */
-  text-align: center;
-  width: 60%;
-  padding: 15px;
-  font-size: 14px;
-  font-family: Helvetica, sans-serif;
-  border: none;
-  border-bottom: 2px solid black;
-  
+
+.container1-textinput, .container2-textinput{
+	margin-left: 140px;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right-style: solid;
+	text-align: center;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right-style: solid;
+	width: 60%;
 }
+
+.h1{
+	 background-color: #2F4F4F;/*darkseagreen;*/
+    padding-bottom: 20px;
+    margin-bottom: 02px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    display: flex;
+    align-self: center;
+    text-align: center;
+    color: white;
+    margin-top: 50px;
+    padding-top: 5px;
+	
+}
+
+

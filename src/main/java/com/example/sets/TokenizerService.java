@@ -28,10 +28,9 @@ public class TokenizerService {
 		    }
 		 }
 		 return operandList.stream().distinct().collect(Collectors.toList());
-		 //return operandList;
+		 
 	}
 }
-//	 	
 
 
 	 

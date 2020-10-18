@@ -25,14 +25,8 @@ public class SetsController {
 	public String statementSubmit(@ModelAttribute Statement mychar, Model model) {
 		model.addAttribute("mystatement", mychar);
 		
-		
-		String expresion2 ="4,1,1,2";// "1,2,3,4,5";//mychar.content2;
-		String expresion1 = "estos son mis datos";//mychar.content1;
-		
-/*		if(expresion1.isEmpty()||expresion2.isEmpty()) {
-			return "Write two sets....empty sets to validate!!!";
-		}
-*/		
+		String expresion2 =mychar.content2;
+		String expresion1 = mychar.content1;
 		
 		tokenService = new TokenizerService();
 		analyzer = new AnalyzerService();
@@ -40,8 +34,7 @@ public class SetsController {
 		
 		List<String> resultOne = analyzer.analizeOne(tokenService.getOperands(expresion1));
 		List<String> resultTwo = analyzer.analizeOne(tokenService.getOperands(expresion2));
-		List<String> datos = analyzer.analyzeBoth(tokenService.getOperands(expresion1),tokenService.getOperands(expresion2));//new ArrayList<String>();
-		
+		List<String> datos = analyzer.analyzeBoth(tokenService.getOperands(expresion1),tokenService.getOperands(expresion2));
 		
 		String m0 = "<tr>";
 		String m1 = "<td>";
