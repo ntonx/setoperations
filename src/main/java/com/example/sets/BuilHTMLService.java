@@ -13,7 +13,7 @@ public class BuilHTMLService {
 				"<head>\r\n" + 
 				"    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\r\n" + 
 				"    <link rel=\"stylesheet\" href=\"css/mystyle.css\">\r\n" + 
-				"    <link rel=\"stylesheet\" href=\"css/main2.css\">\r\n" + 
+				"    <link rel=\"stylesheet\" href=\"css/main3.css\">\r\n" + 
 				"	<title>Computational Mathematics</title>\r\n" + 
 				"</head>\r\n" + 
 				"\r\n" + 

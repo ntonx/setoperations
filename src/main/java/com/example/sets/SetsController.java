@@ -20,6 +20,7 @@ public class SetsController {
 	 AnalyzerService analyzer;
 	 BuilHTMLService buildHTML;
 	 
+	 
 	@PostMapping(value="/",produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseBody
 	public String statementSubmit(@ModelAttribute Statement mychar, Model model) {
@@ -47,6 +48,7 @@ public class SetsController {
 		page=page+m0+m1+"Members"+m2+m1+resultOne.get(1)+m2+m1+resultTwo.get(1)+m2+m3;
 		page=page+m0+m1+"Cardinality"+m2+m1+resultOne.get(0)+m2+m1+resultTwo.get(0)+m2+m3;
 		page=page+m0+m1+"Powerset"+m2+m1+resultOne.get(2)+m2+m1+resultTwo.get(2)+m2+m3;
+		page=page+m0+m1+"Partitions"+m2+m1+resultOne.get(3)+m2+m1+resultTwo.get(3)+m2+m3;
 		
 		page = page+buildHTML.getMiddle();
 		page = page+m0+m1+"A = B?"+m4+datos.get(0)+m5+"A ⊆ B"+m4+datos.get(1)+m5+"B ⊆ A"+m4+datos.get(2)+m5+"A ⊂ B"+m4+datos.get(3)+m5+"B ⊂ A"+m4+
@@ -55,6 +57,10 @@ public class SetsController {
 				"A X B"+m4+datos.get(12)+m5+"B X A"+m4+datos.get(13)+m2+m3;
 		
 		page = page+buildHTML.getEnd();
+		
+		
+		
+
 		
 	  return page;
 	}

@@ -22,11 +22,11 @@ input[type=submit] {
  /* margin-top: 15px;*/
 margin-bottom: 15px;
 margin-left: 200px;
-margin-right: 270px;
+margin-right: 200px;
 
 position-top:70px;
 
-margin-top: 0px;
+margin-top: 20px;
 }
 
 input[type=reset] {
@@ -49,8 +49,8 @@ input[type=reset] {
 margin-bottom: 15px;
 
 position-top:70px;
-
-margin-top: 0px;
+margin-left:120px;
+margin-top: 20px;
 }
 
 /* When moving the mouse over the submit button, add a darker green color */
@@ -70,8 +70,6 @@ input[type=reset]:hover {
 } 
 
 .form{
-	margin-left: 250px;
-	margin-right: 250px;
 }
 
 body {
@@ -136,5 +134,3 @@ body {
     padding-top: 5px;
 	
 }
-
-

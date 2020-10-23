@@ -3,13 +3,15 @@
 <head> 
     <title>Computational Mathematics</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link th:href="@{/css/main.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/main.css" disabled="disabled" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" disabled="disabled"/>
     <script type="text/javascript" th:src="@{/js/actions.js}"></script>
 </head>
 <body>
 	<h1 class="h1">Sets operations</h1>
 	<div class="container container-padding50">
-    <form name="form1" action="#" onsubmit="required()" th:action="@{/}" th:object="${mystatement}" method="post">
+    <form class="form" name="form1" action="#" onsubmit="required()" th:action="@{/}" th:object="${mystatement}" method="post">
 
 	   
 

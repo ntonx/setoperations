@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 public class AnalyzerService {
 	public AnalyzerService() {}
 
+	
+	PartitionService partitions; 
+	
 	public List<String> analizeOne(List<String> list) {
 		
 		List<String> resultOne = new ArrayList<String>();
@@ -23,6 +26,8 @@ public class AnalyzerService {
 		resultOne.add(String.valueOf(cardinality));
 		resultOne.add(members);
 		resultOne.add(2, power);
+		List<String> partitionsSet = PartitionService.getPartitions(list);
+		resultOne.add(partitionsSet.toString().replaceAll("\\[", "{").replaceAll("\\]","}"));
 		
 		return resultOne;
 	}
@@ -96,7 +101,12 @@ public class AnalyzerService {
 
 	private List<String> getProductAB(List<String> set1, List<String> set2) {
 		List<String> inter1 = new ArrayList<String>();
+		if(set2.isEmpty()||set2.isEmpty()) {
+			return inter1;
+		}
+		
 		String data="(";
+		
 		for(int i=0;i<set1.size();i++) {
 			for (int j=0;j<set2.size();j++) {
 				data = data+set1.get(i)+","+set2.get(j)+"),(";
